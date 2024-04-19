@@ -1,0 +1,61 @@
+{% extends "Base.twig" %}
+
+
+{% block body %}
+<div class="row mt-4">
+    <div class="col-12">
+
+        {% if etape2 is defined %}
+            <form name="accesform" method="post" action="index.php?controller=users&action=insertProfilThumb" enctype="multipart/form-data">
+                <input type="hidden" value="{{ user.id }}" name="idUser">
+                <div class="row mb-3">
+                    <div class="col-9">
+                        <label for="formFile" class="form-label">Choisissez votre photo de profil</label>
+                        <div class="input-group">
+                        <input class="form-control" type="file" id="photo" name="photo">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col-9 text-end">
+                        <button type="submit" class="btn btn-primary mb-3">Valider</button>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-9 text-end">
+                <a href="index.php" class="btn btn-sm btn-secondary">Ignorer la photo de profil >></a>
+                    </div>
+                </div>
+
+            </form>
+        {% else %}    
+            <form name="accesform" method="post" action="index.php?controller=users&action=valideInscription">
+
+                <div class="mb-3 row">
+                    <label for="login" class="col-sm-4 col-form-label">Pseudo</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="login" value="" placeholder="Votre pseudo" name="login" required>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="inputPassword" class="col-sm-4 col-form-label">Mot de passe</label>
+                    <div class="col-sm-4">
+                        <input type="password" class="form-control" id="inputPassword" name="password" required>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="inputPasswordConfirm" class="col-sm-4 col-form-label">Confirmer le mot de passe</label>
+                    <div class="col-sm-4">
+                        <input type="password" class="form-control" id="inputPasswordConfirm" name="passwordConfirm" required>
+                    </div>
+                </div>
+                <div class="mb-3 row justify-content-end">
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-primary mb-3">Valider</button>
+                    </div>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+ </div>   
+{% endblock %}

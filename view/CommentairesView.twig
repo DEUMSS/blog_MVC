@@ -1,0 +1,50 @@
+{% extends "Base.twig" %}
+
+
+
+
+{% block body %}
+
+    <div class="row">
+    <p class="col-9">
+    <a href="index.php" class="btn btn-secondary">Retour à la liste des billets</a></p>
+    </div>
+
+    {% if billet is defined %}
+    <div class="row justify-content-center">
+        <div class="col-9">
+            <div class="card mt-5">
+                <div class="card-header">
+                    <em>publié le {{ billet.dateCreation|date('d/m/Y à H:i:s') }}</em>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ billet.titre }}</h5>
+                    <p class="card-text">{{ billet.contenu }}</p>
+                </div>
+            </div>
+        </div>    
+    </div>
+    {% endif %}
+
+
+    {% if listCommentaire is defined %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-9">
+            <h3>Commentaires</h3>
+
+            <div class="list-group">
+                {% for post in listCommentaire %}
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ post.auteur|e }}</h5>
+                            <small><strong>{{ post.auteur|e }}</strong> le {{ post.date_commentaire|date('d/m/Y à H:i:s') }}</small>
+                        </div>
+                        <p class="mb-1">{{ post.commentaire }}</p>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div> 
+    {% endif %}   
+
+{% endblock %}

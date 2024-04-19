@@ -1,0 +1,22 @@
+{% extends "Base.twig" %}
+
+
+{% block body %}
+
+
+    {% for post in listPosts %}
+        <div class="card mt-5">
+            <div class="card-header">
+                <em>publié le {{ post.date_creation|date("d/m/Y à H:i:s") }}</em>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ post.titre|escape }}</h5>
+                <p class="card-text">{{ post.contenu|e|nl2br }}</p>
+                <a href="index.php?controller=commentaires&action=list&idbillet={{ post.id }}" class="btn btn-primary">Commentaires</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+
+

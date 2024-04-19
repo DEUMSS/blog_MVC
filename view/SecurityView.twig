@@ -1,0 +1,32 @@
+{% extends "Base.twig" %}
+
+
+{% block body %}
+<div class="row mt-4">
+    <div class="col-12">
+        <form name="accesform" method="post" action="index.php?controller=security">
+
+            <div class="mb-3 row">
+                <label for="login" class="col-sm-2 col-form-label">Login</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="login" value="{{ login ?? '' }}" placeholder="Votre login" name="login" required>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Mot de passe</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" id="inputPassword" name="password" required>
+                </div>
+            </div>
+
+            <div class="mb-3 row justify-content-end">
+                <div class="col-sm-4">
+                    <button type="submit" class="btn btn-primary mb-3">OK</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>        
+
+{% endblock %}
